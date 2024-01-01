@@ -1,4 +1,5 @@
 //providers app for global
+//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
 
 // In Next.js, this file would be called: app/providers.jsx
 "use client";
