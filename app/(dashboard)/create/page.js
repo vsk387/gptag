@@ -25,5 +25,5 @@ export const createTaskCustom = async (formData) => {
     },
   });
   // revalidate path
-  revalidatePath("/tasks");
+  revalidatePath("/create");
 };
