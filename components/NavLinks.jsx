@@ -3,7 +3,8 @@ const links = [
   { href: "/about", label: "about" },
   { href: "/chat", label: "chat" },
   { href: "/create", label: "create" },
-  { href: "/list", label: "list" },
+  { href: "/tasks", label: "Tasks" },
+  { href: "/tasks/new-task", label: "New Task" },
   { href: "/profile", label: "profile" },
 ];
 

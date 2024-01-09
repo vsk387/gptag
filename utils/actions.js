@@ -87,3 +87,48 @@ export const editTask = async (formData) => {
   // another option, setup the editTask in the component directly
   redirect("/create");
 };
+
+//**************Creating Task FR
+
+export const generateTaskResponse = async ({ tasks }) => {
+  const query = `User inputs a task {$tasks}. Create a small to-do list for the user input.Response should be in the following JSON Format:
+  {
+    "task": { 
+      "userinput":${tasks}, 
+      "title":"title of task",
+      "description":"description of the task",
+      "category": "category of task",
+      "generatedtasks":["short para on task1","short para on task 2","short para on task 3']. These tasks are generated from description
+    }
+  }
+  "category" property has to be between these 6 categories: Work, Errands, Home, Leisure, Financial, Personal. "generatedtasks" property should include a minimum of 2 tasks and a maximum of 4 tasks, with no additional characters. If the task`;
+
+  try {
+    const response = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: "you are excellent to-do list creating assistant",
+        },
+        { role: "user", content: query },
+      ],
+      model: "gpt-3.5-turbo",
+      temperature: 0,
+    });
+    // potentially returns a text with error message
+    const taskData = JSON.parse(response.choices[0].message.content);
+
+    if (!taskData.task) {
+      return null;
+    }
+
+    return taskData.task;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const createNewTask = async (task) => {
+  return null;
+};
