@@ -101,6 +101,7 @@ export const generateTaskResponse = async ({ tasks }) => {
       "generatedtasks":["short para on task1","short para on task 2","short para on task 3']. These tasks are generated from description
     }
   }
+  json format no matter what
   "category" property has to be between these 6 categories: Work, Errands, Home, Leisure, Financial, Personal. "generatedtasks" property should include a minimum of 2 tasks and a maximum of 4 tasks, with no additional characters. If the task`;
 
   try {
@@ -129,6 +130,8 @@ export const generateTaskResponse = async ({ tasks }) => {
   }
 };
 
-export const createNewTask = async (task) => {
-  return null;
+export const createNewTour = async (task) => {
+  return prisma.task2.create({
+    data: task,
+  });
 };
