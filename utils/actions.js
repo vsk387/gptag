@@ -130,7 +130,7 @@ export const generateTaskResponse = async ({ tasks }) => {
   }
 };
 
-export const createNewTour = async (task) => {
+export const createNewTask = async (task) => {
   return prisma.task2.create({
     data: task,
   });

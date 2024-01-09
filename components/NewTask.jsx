@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import TaskInfo from "@/components/TaskInfo";
 
 const NewTask = () => {
+  const queryClient = useQueryClient();
   const {
     mutate,
     isPending,
@@ -17,6 +18,8 @@ const NewTask = () => {
     mutationFn: async (tasks) => {
       const newTask = await generateTaskResponse(tasks);
       if (newTask) {
+        await createNewTask(newTask);
+        queryClient.invalidateQueries({ queryKey: ["tasks"] });
         return newTask;
       }
       toast.error("An error occured :/");
