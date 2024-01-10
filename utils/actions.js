@@ -135,3 +135,45 @@ export const createNewTask = async (task) => {
     data: task,
   });
 };
+
+export const getAllTasks2 = async (searchTerm) => {
+  if (!searchTerm) {
+    const tasks = await prisma.task2.findMany({
+      orderBy: {
+        createdAt: "asc",
+      },
+    });
+    return tasks;
+  }
+
+  const tasks = await prisma.task2.findMany({
+    where: {
+      OR: [
+        {
+          title: {
+            contains: searchTerm,
+          },
+        },
+        {
+          description: {
+            contains: searchTerm,
+          },
+        },
+        {
+          category: {
+            contains: searchTerm,
+          },
+        },
+        {
+          generatedtasks: {
+            contains: searchTerm,
+          },
+        },
+      ],
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+  return tasks;
+};
