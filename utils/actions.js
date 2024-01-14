@@ -88,7 +88,7 @@ export const editTask = async (formData) => {
   redirect("/create");
 };
 
-//**************Creating Task FR
+//**************Creating Task FR**************
 
 export const generateTaskResponse = async ({ tasks }) => {
   const query = `User inputs a task {$tasks}. Create a small to-do list for the user input.Response should be in the following JSON Format:
@@ -164,16 +164,24 @@ export const getAllTasks2 = async (searchTerm) => {
             contains: searchTerm,
           },
         },
-        {
-          generatedtasks: {
-            contains: searchTerm,
-          },
-        },
       ],
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
   return tasks;
 };
+
+export const getSingleTask = async (id) => {
+  return prisma.task2.findUnique({
+    where: {
+      id,
+    },
+  });
+};
+
+export const deleteTask2= async =>
+{
+  
+}
