@@ -2,7 +2,7 @@ import TaskCard from "./TaskCard";
 
 const TasksList = ({ data }) => {
   if (data.length === 0)
-    return <h4 className="text-lg ">Tasks have no been found for the input</h4>;
+    return <h4 className="text-lg ">No tasks</h4>;
 
   return (
     <div className="grid sm:grid-cols-2  lg:grid-cols-4 gap-8">

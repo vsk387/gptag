@@ -91,7 +91,7 @@ export const editTask = async (formData) => {
 //**************Creating Task FR**************
 
 export const generateTaskResponse = async ({ tasks }) => {
-  const query = `User inputs a task {$tasks}. Create a small to-do list for the user input.Response should be in the following JSON Format:
+  const query = `User inputs a task {$tasks}. Create a small to-do list for the user input.No introduction reply sentence, just straight to Response. Response should be in the following JSON Format:
   {
     "task": { 
       "userinput":${tasks}, 
@@ -102,7 +102,7 @@ export const generateTaskResponse = async ({ tasks }) => {
     }
   }
   json format no matter what
-  "category" property has to be between these 6 categories: Work, Errands, Home, Leisure, Financial, Personal. "generatedtasks" property should include a minimum of 2 tasks and a maximum of 4 tasks, with no additional characters. If the task`;
+  "category" property has to be between these 6 categories: Work, Errands, Home, Leisure, Financial, Personal. No abstract tasks in "generatedtasks". "generatedtasks" property should include a minimum of 2 tasks and a maximum of 4 tasks, with no additional characters.`;
 
   try {
     const response = await openai.chat.completions.create({
@@ -181,7 +181,16 @@ export const getSingleTask = async (id) => {
   });
 };
 
-export const deleteTask2= async =>
+export const deleteTask2= async (formData) =>
 {
-  
-}
+  const id= formData.get('id');
+  try{
+    await prisma.task2.delete({
+      where:{ id  }});
+    revalidatePath('/tasks/{id}');
+  }
+    catch(e)
+  {
+    console.error("Failed to delete", e);
+  }
+};

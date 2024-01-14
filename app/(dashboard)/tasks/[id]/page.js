@@ -1,22 +1,31 @@
+
 import React from "react";
 import { getSingleTask } from "@/utils/actions";
-import { redirect } from "next/dist/server/api-utils";
 import TaskInfo from "@/components/TaskInfo";
 import Link from "next/link";
+import { redirect } from 'next/navigation';
+import DeleteTask from "@/components/DeleteTask";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+
 
 const SingleTaskPage = async ({ params }) => {
   const task = await getSingleTask(params.id);
 
   if (!task) {
-    redirect("/tasks");
+    redirect('/tasks');
   }
 
   return (
     <div>
-      <Link href="/tasks" classname="btn btn-accent">
+      <Link href="/tasks" className="btn btn-accent">
         Back To Tasks
       </Link>
       <TaskInfo task={task} />
+      <DeleteTask id={task.id}/>
     </div>
   );
 };

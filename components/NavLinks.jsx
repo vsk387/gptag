@@ -5,7 +5,8 @@ const links = [
   { href: "/create", label: "create" },
   { href: "/tasks", label: "Tasks" },
   { href: "/tasks/new-task", label: "New Task" },
-  { href: "/profile", label: "profile" },
+  {href: "/categories", label: "categories"},
+  {href: "/profile", label: "profile" },
 ];
 
 const NavLinks = () => {
