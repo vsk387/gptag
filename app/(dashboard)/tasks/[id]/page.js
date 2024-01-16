@@ -11,7 +11,6 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 
-
 const SingleTaskPage = async ({ params }) => {
   const task = await getSingleTask(params.id);
 

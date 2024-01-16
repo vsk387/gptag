@@ -9,6 +9,7 @@ const TaskCard = ({ task }) => {
     >
       <div className="card-body items-center text-center">
         <h2 className="card-title text-center">{title}</h2>
+        <h5 className="card-normal text-body">{category}</h5>
       </div>
     </Link>
   );

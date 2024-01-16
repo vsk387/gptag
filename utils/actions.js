@@ -4,6 +4,7 @@
 
 import prisma from "@/utils/db";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 import OpenAI from "openai";
 
@@ -33,7 +34,8 @@ export const generateChatResponse = async (chatMessages) => {
   }
 };
 
-//*************************CREATE TASK PAGE******************************
+//*************************CREATE REMINDERS PAGE******************************
+
 export const getAllTasks = async () => {
   return prisma.task.findMany({
     orderBy: {
@@ -88,7 +90,7 @@ export const editTask = async (formData) => {
   redirect("/create");
 };
 
-//**************Creating Task FR**************
+//**************Creating TASKS**************
 
 export const generateTaskResponse = async ({ tasks }) => {
   const query = `User inputs a task {$tasks}. Create a small to-do list for the user input.No introduction reply sentence, just straight to Response. Response should be in the following JSON Format:
@@ -102,7 +104,7 @@ export const generateTaskResponse = async ({ tasks }) => {
     }
   }
   json format no matter what
-  "category" property has to be between these 6 categories: Work, Errands, Home, Leisure, Financial, Personal. No abstract tasks in "generatedtasks". "generatedtasks" property should include a minimum of 2 tasks and a maximum of 4 tasks, with no additional characters.`;
+  "category" property has to be between these 6 categories: Work, Errands, Home, Leisure, Financial, Personal. No abstract tasks in "generatedtasks"."generatedtasks" property should include a minimum of 2 tasks and a maximum of 4 tasks, with no additional characters.`;
 
   try {
     const response = await openai.chat.completions.create({
@@ -194,3 +196,5 @@ export const deleteTask2= async (formData) =>
     console.error("Failed to delete", e);
   }
 };
+
+

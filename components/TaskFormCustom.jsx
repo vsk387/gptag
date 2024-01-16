@@ -14,7 +14,7 @@ const SubmitButton = () => {
       className="btn join-item btn-primary"
       disabled={pending}
     >
-      {pending ? "please wait... " : "create task"}
+      {pending ? "please wait... " : "create reminder"}
     </button>
   );
 };

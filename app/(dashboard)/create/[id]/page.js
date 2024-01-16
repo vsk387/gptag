@@ -13,7 +13,7 @@ const TaskPage = async ({ params }) => {
     <>
       <div className="mb-16">
         <Link href="/create" className="btn btn-accent">
-          Back to Tasks
+          Back to Reminders
         </Link>
         <EditForm task={task} />
       </div>

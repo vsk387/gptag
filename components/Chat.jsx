@@ -60,7 +60,7 @@ const Chat = () => {
         <div className="join w-full">
           <input
             type="text"
-            placeholder="Type here!"
+            placeholder="Type here to chat!"
             className="input input-bordered join-item w-full"
             value={text}
             required

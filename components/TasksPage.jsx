@@ -13,11 +13,12 @@ const TasksPage = () => {
 
   return (
     <>
+      <div className="w-96 mb-3">Filter by Task or Category:</div>
       <form className="max-w-lg mb-12">
         <div className="join w-full">
           <input
             type="text"
-            placeholder="enter task here..."
+            placeholder="enter Task or Category here..."
             className="input input-bordered join-item w-full"
             name="search"
             value={searchValue}
@@ -39,6 +40,7 @@ const TasksPage = () => {
       ) : (
         <TasksList data={data} />
       )}
+
     </>
   );
 };

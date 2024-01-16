@@ -17,7 +17,7 @@ const TaskForm = () => {
           required
         />
         <button type="submit" className="btn join-item btn-primary">
-          create task
+          create reminder
         </button>
       </div>
     </form>
