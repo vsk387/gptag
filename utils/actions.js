@@ -21,11 +21,11 @@ export const generateChatResponse = async (chatMessages) => {
         {
           role: "system",
           content:
-            "You are an excellent to-do list AI assistant.You will receive input from the user and create a to-do list for whatever task the user inputs, and add suggested tasks as well to complete the task the user has inputted.Each task should be in a brief bullet point.You will also categorize the tasks to different categories like Travel, Work, Read, Watch etc.. All tasks will be put into these different categories and output a one word category to the user, without any additional characters. Should always be less than 8 bullet points",
+            "You are an excellent to-do list AI assistant. You will help the user with whatever they input",
         },
         ...chatMessages,
       ],
-      model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo-1106",
       temperature: 0.2,
     });
     return response.choices[0].message;
@@ -100,7 +100,7 @@ export const generateTaskResponse = async ({ tasks }) => {
       "title":"title of task",
       "description":"description of the task",
       "category": "category of task",
-      "generatedtasks":["short para on task1","short para on task 2","short para on task 3']. These tasks are generated from description
+      "generatedtasks":["short para on task1","short para on task 2","short para on task 3']. These tasks are generated from userinput
     }
   }
   json format no matter what
@@ -115,7 +115,8 @@ export const generateTaskResponse = async ({ tasks }) => {
         },
         { role: "user", content: query },
       ],
-      model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo-1106",
+      response_format: {type: "json_object"},
       temperature: 0,
     });
     // potentially returns a text with error message

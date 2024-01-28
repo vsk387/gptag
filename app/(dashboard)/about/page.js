@@ -19,7 +19,7 @@ const AboutPage = () => {
         <h1 className="text-3xl font-bold mb-6">What is GPToDo?</h1>
 
         <p className="mb-4">
-        GPToDo is an AI Powered Assistant website. Using OpenAI's turbo 3.5, GPToDo creates tasks for you, and things you have to, and categorizes them, based on the input or your goal, you give to the AI.
+        GPToDo is an AI Powered Assistant website. Using OpenAI's gpt-turbo-3.5 model, GPToDo creates tasks for you, and things you have to, and categorizes them, based on the input or your goal, you give to the AI.
         </p>
 
         <p className="mb-4">

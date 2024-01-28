@@ -20,7 +20,7 @@ const SingleTaskPage = async ({ params }) => {
 
   return (
     <div>
-      <Link href="/tasks" className="btn btn-accent">
+      <Link href="/tasks" className="btn btn-accent mb-4">
         Back To Tasks
       </Link>
       <TaskInfo task={task} />
